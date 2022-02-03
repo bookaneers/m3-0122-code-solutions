@@ -1,4 +1,5 @@
-const { createElement } = require('../lib');
+// const { createElement } = require('../lib');
+import { createElement } from '../lib';
 
 class TodoList {
   constructor(onToggle) {
@@ -9,7 +10,7 @@ class TodoList {
   handleChange(event) {
     const todoItem = event.target.closest('[data-todo-id]');
     if (!todoItem) return;
-    const todoId = Number(todoItem.getAttribute('data-todo-id'));
+    const todoId = parseInt(todoItem.getAttribute('data-todo-id'), 10);
     this.onToggle(todoId);
   }
 
@@ -49,4 +50,5 @@ class TodoList {
   }
 }
 
-module.exports = TodoList;
+// module.exports = TodoList;
+export default TodoList;
