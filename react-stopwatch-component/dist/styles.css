@@ -1,14 +1,21 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 764c9c8 (Completed react-stopwatch-component)
 .wall {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
+<<<<<<< HEAD
   margin: 150px;
+=======
+>>>>>>> 764c9c8 (Completed react-stopwatch-component)
 }
 
 .watch {
   border: 5px solid black;
+<<<<<<< HEAD
   height: 150px;
   width: 150px;
   border-radius: 50%;
@@ -17,4 +24,15 @@
 .icon {
   max-height: 40px;
   width: auto;
+=======
+  padding: 100px;
+  border-radius: 50%;
+  margin: 100px 100px 20px;
+  font-size: 30px;
+}
+
+.icon {
+  width: 45px;
+  height: 45px;
+>>>>>>> 764c9c8 (Completed react-stopwatch-component)
 }
