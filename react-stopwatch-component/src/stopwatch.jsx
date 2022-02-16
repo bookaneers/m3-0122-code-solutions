@@ -17,6 +17,8 @@ class Stopwatch extends React.Component {
       () => this.tick(), 1000);
   }
 
+
+  
   stopCounting() {
     clearInterval(this.timerID);
   }
