@@ -27,11 +27,12 @@ class AppDrawer  extends React.Component {
         return (
             <div className='main'> 
                 <div className={`modal ${this.state.modal}`}>
+                    
                     <img class='menu' onClick={this.handleClickMenu} 
                     className={`menu ${this.state.menu}`} src='./images/menu.png'/> 
                                       
                 </div>
-                <img class='devil'src='./images/devil.png'/>  
+                <img class='dragonfly'src='./images/dragonfly.png'/>  
             </div>
         );
     }

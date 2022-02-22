@@ -30,7 +30,7 @@ body {
     background-color: rgba(0, 0, 0, 0.8); /* Black w/ opacity */
 }
 
-.devil {
+.dragonfly {
     width: 500px;
 }
 
@@ -44,9 +44,7 @@ body {
 .menu.on {
 
 }
-
 .menu.off {
-
 }
 
 .menu:hover {
