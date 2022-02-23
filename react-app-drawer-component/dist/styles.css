@@ -14,16 +14,12 @@ body {
 }
 
 .modal.on {
-
-}
-
-.modal.off {
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
     padding-top: 200px; /* Location of the box */
     padding-left: 200px; /* Location of the box */
-    left: 0;
-    top: 0;
+    left: 250px;
+    top: 0px;
     width: 100%; /* Full width */
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
@@ -34,17 +30,17 @@ body {
     width: 500px;
 }
 
+.menuBtn {
+    position: fixed; /* Stay in place */
+    left: 15px;
+    top: 35px;
+    width: 50px;    
+}
+
 .menu {
     position: fixed; /* Stay in place */
     left: 15px;
     top: 15px;
-    width: 50px;    
-}
-
-.menu.on {
-
-}
-.menu.off {
 }
 
 .menu:hover {
