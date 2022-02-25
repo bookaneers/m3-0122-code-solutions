@@ -8,8 +8,6 @@ class Carousel extends React.Component {
     this.state = {
       openId: 0
     };
-    // this.handleClickRight = this.handleClickRight.bind(this);
-    // this.handleClickLeft = this.handleClickLeft.bind(this);
     this.counting();
   }
 
@@ -42,15 +40,18 @@ class Carousel extends React.Component {
     }
   }
 
-  getDots() {
+  getDots(props) {
+    const items = props.items;
+    const listOfDots = items.map(item => {
+      if (item.id === this.state.openId + 1) {
+        return <li key={item.id}> <i className="fas fa-circle"></i> </li>;
+      } else {
+        return <li key={item.id}> <i className="far fa-circle"></i> </li>;
+      }
+    }
+    );
     return (
-      <div className='dots'>
-        <i className="fas fa-circle"></i>
-        <i className="far fa-circle"></i>
-        <i className="far fa-circle"></i>
-        <i className="far fa-circle"></i>
-        <i className="far fa-circle"></i>
-      </div>
+       <ul>{listOfDots}</ul>
     );
   }
 
@@ -68,8 +69,9 @@ class Carousel extends React.Component {
                   <i className='fas fa-angle-right' />
               </div>
           </div>
-
-          { this.getDots()}
+          <div className = 'dots'>
+            { this.getDots(this.props) }
+          </div>
       </div>
     );
   }

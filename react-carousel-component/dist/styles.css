@@ -1,12 +1,9 @@
 * {
-    box-sizing: border-box;
-}
-  
-body {
-    margin: 0;
+  box-sizing: border-box;
 }
 
-.page-carousel {
+body {
+  margin: 0;
 }
 
 .carousel {
@@ -30,9 +27,10 @@ body {
   margin-right: 150px;
 }
 
-.leftarrow, .rightarrow {
+.leftarrow,
+.rightarrow {
   font-size: 68px;
-  text-align:space-between;
+  text-align: space-between;
   cursor: pointer;
 }
 
@@ -44,5 +42,13 @@ body {
 }
 
 .dots i {
-  padding: .5rem;
+  padding: 0.5rem;
+}
+
+ul {
+  list-style-type: none;
+}
+
+ul li {
+  display: inline;
 }
