@@ -13,28 +13,28 @@ class Carousel extends React.Component {
 
   counting() {
     this.timerID = setInterval(
-      () => this.tick(), 3000);
+      () => this.tick(this.props), 3000);
   }
 
-  tick() {
-    if (this.state.openId === 4) {
+  tick(props) {
+    if (this.state.openId === props.items.length - 1) {
       this.setState({ openId: 0 });
     } else {
       this.setState({ openId: this.state.openId + 1 });
     }
   }
 
-  handleClickRight() {
-    if (this.state.openId === 4) {
+  handleClickRight(props) {
+    if (this.state.openId === props.items.length - 1) {
       this.setState({ openId: 0 });
     } else {
       this.setState({ openId: this.state.openId + 1 });
     }
   }
 
-  handleClickLeft() {
+  handleClickLeft(props) {
     if (this.state.openId === 0) {
-      this.setState({ openId: 4 });
+      this.setState({ openId: props.items.length - 1 });
     } else {
       this.setState({ openId: this.state.openId - 1 });
     }
@@ -42,6 +42,7 @@ class Carousel extends React.Component {
 
   getDots(props) {
     const items = props.items;
+
     const listOfDots = items.map(item => {
       if (item.id === this.state.openId + 1) {
         return <li key={item.id}> <i className="fas fa-circle"></i> </li>;
@@ -59,13 +60,13 @@ class Carousel extends React.Component {
     return (
       <div className='carousel'>
           <div className='iconsandarrows'>
-              <div className='leftarrow' onClick={() => this.handleClickLeft()}>
+              <div className='leftarrow' onClick={() => this.handleClickLeft(this.props)}>
                   <i className='fas fa-angle-left' />
               </div>
               <div className='icons'>
                   <img src = {this.props.items[this.state.openId].url} />
               </div>
-              <div className='rightarrow' onClick={() => this.handleClickRight()}>
+              <div className='rightarrow' onClick={() => this.handleClickRight(this.props)}>
                   <i className='fas fa-angle-right' />
               </div>
           </div>
