@@ -1,0 +1,31 @@
+{
+  "name": "express-error-handling",
+  "version": "1.0.0",
+  "description": "",
+  "main": "server/index.js",
+  "scripts": {
+    "build": "webpack",
+    "watch": "webpack --watch --mode=development",
+    "start": "node server/index.js",
+    "dev:server": "nodemon server/index.js",
+    "db:import": "bash scripts/db-import.bash"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "pg": "^8.5.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.17.5",
+    "@babel/plugin-transform-react-jsx": "^7.17.3",
+    "babel-loader": "^8.2.3",
+    "nodemon": "^2.0.6",
+    "webpack": "^5.70.0",
+    "webpack-cli": "^4.9.2"
+  }
+}
