@@ -17,7 +17,7 @@ const jsonMiddleware = express.json();
 
 app.use(jsonMiddleware);
 
-app.get('/api/grades', (req, res) => {
+app.get('/api/grades', (req, res, next) => {
   const sql = `
     select *
       from "grades"
@@ -27,17 +27,17 @@ app.get('/api/grades', (req, res) => {
       const grades = result.rows;
       res.json(grades);
     })
-    .catch(err => next(err));;
+    .catch(err => next(err));
 });
 
-app.post('/api/grades', (req, res) => {
+app.post('/api/grades', (req, res, next) => {
   const { name, course } = req.body;
   const score = Number(req.body.score);
   if (!Number.isInteger(score) || score < 0 || score > 100) {
-    throw new ClientError(400, 'score must be an integer between 0 and 100')
+    throw new ClientError(400, 'score must be an integer between 0 and 100');
   }
   if (!name || !course) {
-    throw new ClientError(400, 'name, coure, and score are required fields')
+    throw new ClientError(400, 'name, coure, and score are required fields');
   }
   const sql = `
     insert into "grades" ("name", "course", "score")
@@ -53,10 +53,10 @@ app.post('/api/grades', (req, res) => {
     .catch(err => next(err));
 });
 
-app.get('/api/grades/:gradeId', (req, res) => {
+app.get('/api/grades/:gradeId', (req, res, next) => {
   const gradeId = Number(req.params.gradeId);
   if (!Number.isInteger(gradeId) || gradeId < 1) {
-    throw new ClientError(400, 'grade must be a positive integer')
+    throw new ClientError(400, 'grade must be a positive integer');
   }
   const sql = `
     select *
@@ -68,7 +68,7 @@ app.get('/api/grades/:gradeId', (req, res) => {
     .then(result => {
       const [grade] = result.rows;
       if (!grade) {
-        throw new ClientError(404, `cannot find grade with gradeId ${gradeId}`)
+        throw new ClientError(404, `cannot find grade with gradeId ${gradeId}`);
       } else {
         res.json(grade);
       }
@@ -76,15 +76,15 @@ app.get('/api/grades/:gradeId', (req, res) => {
     .catch(err => next(err));
 });
 
-app.put('/api/grades/:gradeId', (req, res) => {
+app.put('/api/grades/:gradeId', (req, res, next) => {
   const gradeId = Number(req.params.gradeId);
   if (!Number.isInteger(gradeId) || gradeId < 1) {
-    throw new ClientError(400, 'grade must be a positive integer')
+    throw new ClientError(400, 'grade must be a positive integer');
   }
   const { name, course } = req.body;
   const score = Number(req.body.score);
   if (!name || !course || !score) {
-    throw new ClientError(400, 'name, coure, and score are required fields')
+    throw new ClientError(400, 'name, coure, and score are required fields');
   }
   const sql = `
     update "grades"
@@ -99,7 +99,7 @@ app.put('/api/grades/:gradeId', (req, res) => {
     .then(result => {
       const [updatedGrade] = result.rows;
       if (!updatedGrade) {
-        throw new ClientError(404, `cannot find grade with gradeId ${gradeId}`)
+        throw new ClientError(404, `cannot find grade with gradeId ${gradeId}`);
       } else {
         res.json(updatedGrade);
       }
@@ -107,10 +107,10 @@ app.put('/api/grades/:gradeId', (req, res) => {
     .catch(err => next(err));
 });
 
-app.delete('/api/grades/:gradeId', (req, res) => {
+app.delete('/api/grades/:gradeId', (req, res, next) => {
   const gradeId = Number(req.params.gradeId);
   if (!Number.isInteger(gradeId) || gradeId < 1) {
-    throw new ClientError(400, 'grade must be a positive integer')
+    throw new ClientError(400, 'grade must be a positive integer');
   }
   const sql = `
     delete from "grades"
@@ -122,7 +122,7 @@ app.delete('/api/grades/:gradeId', (req, res) => {
     .then(result => {
       const [deletedGrade] = result.rows;
       if (!deletedGrade) {
-        throw new ClientError(404, `cannot find grade with gradeId ${gradeId}`)
+        throw new ClientError(404, `cannot find grade with gradeId ${gradeId}`);
       } else {
         res.sendStatus(204);
       }
